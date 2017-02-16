@@ -1,5 +1,7 @@
 var socket = io();
 
+//var moment = require('moment');
+
 socket.on('connect', function() //which is fired when we successfully connect to the server
 	{
 		console.log('connected to socket.io server');
@@ -7,9 +9,11 @@ socket.on('connect', function() //which is fired when we successfully connect to
 
 socket.on('message', function(message) //way for the frontend to listen to the customised event,'message'
 	{
-		console.log('New message');
+		var momentTimestamp = moment.utc(message.timestamp); //too display tiimestamp in utc,not in locale time
+		console.log(momentTimestamp.format()); //2017-02-16T13:18:20Z
+		console.log(momentTimestamp.local().format()); //2017-02-16T23:18:20+10:00
 		console.log(message.text);
-		jQuery('.messages').append('<p>'+message.text+'</p>');
+		jQuery('.messages').append('<p><strong>'+momentTimestamp.local().format("h mm a")+' : </strong>'+message.text+'</p>');
 	});
 
 //socket.emi('message',{text:'Hello'}) - we give this in the consol log of browser
