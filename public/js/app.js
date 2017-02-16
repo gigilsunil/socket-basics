@@ -9,6 +9,7 @@ socket.on('message', function(message) //way for the frontend to listen to the c
 	{
 		console.log('New message');
 		console.log(message.text);
+		jQuery('.messages').append('<p>'+message.text+'</p>');
 	});
 
 //socket.emi('message',{text:'Hello'}) - we give this in the consol log of browser
