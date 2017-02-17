@@ -1,0 +1,16 @@
+.vertical-center /*class*/
+{
+	min-height :100vh;
+	margin :0;
+	align-items :center;
+	display:flex;
+}
+h1
+{
+	margin:24px 0;  /*24 above and below, 0 for left and right*/
+}
+
+.messagees p
+{
+	margin :6px 0;
+}
