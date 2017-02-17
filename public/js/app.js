@@ -6,9 +6,14 @@ var room = getParamValuesByName('room');
 
 socket1.on('connect', function() //which is fired when we successfully connect to the server
 	{
-		console.log(name + ' joined the ' + room);
+		//console.log(name + ' joined the ' + room);
 		console.log('connected to socket.io server');
 		jQuery('.room_title').text(room);
+		socket1.emit('joinRoom',
+			{
+				name :name,
+				room :room
+			});
 	});
 
 socket1.on('message', function(message) //way for the frontend to listen to the customised event,'message'
@@ -19,7 +24,7 @@ socket1.on('message', function(message) //way for the frontend to listen to the 
 		console.log(message.text);
 		var $message = jQuery('.messages');
 		
-		if(message.name  !== 'System')
+		//if(message.name  !== 'System')
 		{
 			$message.append('<p><strong><red>' + message.name +'</red> '+ momentTimestamp.local().format("h mm a") + ': </strong> </p> ');
 		
