@@ -22,7 +22,8 @@ socket1.on('message', function(message) //way for the frontend to listen to the 
 		console.log(momentTimestamp.format()); //2017-02-16T13:18:20Z
 		console.log(momentTimestamp.local().format()); //2017-02-16T23:18:20+10:00
 		console.log(message.text);
-		var $message = jQuery('.messages');
+		var $messages = jQuery('.messages');
+		var $message = jQuery('<li class="list-group-item"></li>');//$ is for you to understand..it is jQuery...it is ont mandatory
 		
 		//if(message.name  !== 'System')
 		{
@@ -31,6 +32,7 @@ socket1.on('message', function(message) //way for the frontend to listen to the 
 		}
 		
 		$message.append('<p>'+ message.text + '</p>');
+		$messages.append($message);
 	});
 
 //socket.emi('message',{text:'Hello'}) - we give this in the consol log of browser
