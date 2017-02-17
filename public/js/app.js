@@ -8,6 +8,7 @@ socket1.on('connect', function() //which is fired when we successfully connect t
 	{
 		console.log(name + ' joined the ' + room);
 		console.log('connected to socket.io server');
+		jQuery('.room_title').text(room);
 	});
 
 socket1.on('message', function(message) //way for the frontend to listen to the customised event,'message'
